@@ -34,18 +34,36 @@
 
 ---
 
-## 🛠 Tech Stack
 
-- Python 3.10+
-- Libraries:
-  - `yfinance`
-  - `pandas`, `numpy`
-  - `matplotlib`, `plotly`
-  - `scikit-learn`, `statsmodels`
-  - `openai` or `transformers`
-  - `sec-edgar-downloader`
+## 🛠 Tech Stack
+- Create conda environment: `conda create -n stockanalyzer python=3.11`
+- Activate conda environment: `conda activate stockanalyzer`
+- Install Required Packages: 
+  - Essential libraries: `conda install -c conda-forge yfinance pandas numpy matplotlib plotly scikit-learn`
+  - AI libraries: `conda install -c conda-forge openai transformers`
+  - SEC Edgar Downloader: `conda install -c conda-forge sec-edgar-downloader`
+- Optional - Save Requirements file: `conda list --export > requirements.txt`
 
 ---
 
 ## 📂 Folder Structure (Suggested)
+```bash
+stockanalyzer/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── reports/
+│   ├── 10-k/
+│   └── 10-q/
+├── src/
+│   ├── data/
+│   ├── analysis/
+│   └── visualization/
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 

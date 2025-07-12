@@ -1,0 +1,1 @@
+# StockAnalyzer package init

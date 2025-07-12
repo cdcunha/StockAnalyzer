@@ -18,9 +18,14 @@ def fetch_historical_prices(symbol=None, period="5y"):
     """
     if symbol is None:
         symbol = DEFAULT_STOCKS[0]
-    # Placeholder for actual yfinance call
-    # return yf.download(symbol, period=period)
-    return None
+    try:
+        df = yf.download(symbol, period=period)
+        if df.empty:
+            return None
+        return df
+    except Exception as e:
+        print(f"Error fetching historical prices for {symbol}: {e}")
+        return None
 
 
 def fetch_financial_indicators(symbol=None):
@@ -33,7 +38,23 @@ def fetch_financial_indicators(symbol=None):
     """
     if symbol is None:
         symbol = DEFAULT_STOCKS[0]
-    # Placeholder for actual yfinance info
-    # ticker = yf.Ticker(symbol)
-    # return ticker.info
-    return None
+    try:
+        ticker = yf.Ticker(symbol)
+        info = ticker.info
+        # Extract key indicators
+        indicators = {
+            'symbol': symbol,
+            'shortName': info.get('shortName'),
+            'sector': info.get('sector'),
+            'marketCap': info.get('marketCap'),
+            'trailingPE': info.get('trailingPE'),
+            'forwardPE': info.get('forwardPE'),
+            'priceToBook': info.get('priceToBook'),
+            'revenue': info.get('totalRevenue'),
+            'grossMargins': info.get('grossMargins'),
+            'dividendYield': info.get('dividendYield'),
+        }
+        return indicators
+    except Exception as e:
+        print(f"Error fetching indicators for {symbol}: {e}")
+        return None

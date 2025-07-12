@@ -43,6 +43,7 @@
   - AI libraries: `conda install -c conda-forge openai transformers`
   - SEC Edgar Downloader: `conda install -c conda-forge sec-edgar-downloader`
 - Optional - Save Requirements file: `conda list --export > requirements.txt`
+- Install Streamlit: `conda install -c conda-forge streamlit`
 
 ---
 
